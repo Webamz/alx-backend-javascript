@@ -5,9 +5,8 @@ export default class Building {
       if (!props.find((e) => e === 'evacuationWarningMessage')) {
         throw new Error('Class extending Building must override evacuationWarningMessage');
       }
-
-      this.sqft = sqft;
     }
+    this._sqft = sqft;
   }
 
   get sqft() {
@@ -15,8 +14,8 @@ export default class Building {
   }
 
   set sqft(sqft) {
-    if (typeof sqft !== 'number') {
-      throw new TypeError('sqft must be a number');
+    if ((typeof sqft !== 'number') && (sqft instanceof Number)) {
+      throw new TypeError('Sqft must be a number');
     }
     this._sqft = sqft;
   }
